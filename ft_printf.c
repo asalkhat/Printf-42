@@ -28,6 +28,12 @@ static int	helper(char c, args)
 	}
 	else if (c == 'p')
 	else if (c == 'd')
+	{
+		int	value;
+		value = va_arg(args, int);
+		ft_putnubr_fd(value, 1);
+		return (1);
+	}
 	else if (c == 'i')
 	{
 		int     value;
