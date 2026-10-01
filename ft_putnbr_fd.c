@@ -26,13 +26,16 @@ static int	helper(long n, int fd)
 int	ft_putnbr_fd(int n, int fd)
 {
 	long	num;
+	int	i;
 
 	num = n;
+	i = 0;
 	if (num < 0)
 	{
 		write(fd, "-", 1);
 		num = -num;
+		i++;
 	}
 	helper(num, fd);
-	return (
+	return (i);
 }
