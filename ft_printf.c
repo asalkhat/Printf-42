@@ -18,7 +18,7 @@ static int	helper(char c, args)
 	{
 		int	value;
 		value = va_arg(args, int);
-		ft_putchar_fd(value, 1);
+		return (ft_putchar_fd(value, 1));
 	}
 	else if (c == 's')
 	{
@@ -31,20 +31,17 @@ static int	helper(char c, args)
 	{
 		int	value;
 		value = va_arg(args, int);
-		ft_putnubr_fd(value, 1);
-		return (1);
+		return (ft_putnbr_fd(value, 1));
 	}
 	else if (c == 'i')
 	{
 		int     value;
 		value = va_arg(args, int);
-		ft_putnubr_fd(value, 1);
-		return (1);
+		return (ft_putnubr_fd(value, 1));
 
 	}
 	else if (c == 'u')
-	else if (c == 'x')
-	else if (c == 'X')
+	else if (c == 'x' || c == 'X')
 	else if (c == '%')
 	return ();
 }
