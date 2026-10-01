@@ -37,7 +37,7 @@ static int	helper(char c, args)
 	{
 		int     value;
 		value = va_arg(args, int);
-		return (ft_putnubr_fd(value, 1));
+		return (ft_putnbr_fd(value, 1));
 
 	}
 	else if (c == 'u')
