@@ -38,6 +38,6 @@ int	ft_putnbr_fd(int n, int fd)
 		num = -num;
 		i++;
 	}
-	i = helper(num, fd);
+	i = i + helper(num, fd);
 	return (i);
 }
