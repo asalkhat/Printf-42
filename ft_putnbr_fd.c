@@ -15,26 +15,25 @@
 static int	helper(long n, int fd)
 {
 	char	c;
+	int	count;
 
+	count = 0;
 	if (n >= 10)
-		helper(n / 10, fd);
+		count = helper(n / 10, fd);
 	c = (n % 10) + '0';
 	write(fd, &c, 1);
-	return
+	return (count + 1);
 }
 
 int	ft_putnbr_fd(int n, int fd)
 {
 	long	num;
-	int	i;
 
 	num = n;
-	i = 0;
 	if (num < 0)
 	{
 		write(fd, "-", 1);
 		num = -num;
-		i++;
 	}
 	helper(num, fd);
 	return (i);
