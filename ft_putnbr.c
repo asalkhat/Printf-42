@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asalkhat <asalkhat@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/10/01 17:42:58 by asalkhat          #+#    #+#             */
-/*   Updated: 2026/10/01 17:45:16 by asalkhat         ###   ########.fr       */
+/*   Created: 2026/10/04 10:18:27 by asalkhat          #+#    #+#             */
+/*   Updated: 2026/10/04 10:19:21 by asalkhat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static int	helper(long n)
 {
 	char	c;
-	int	count;
+	int		count;
 
 	count = 0;
 	if (n >= 10)
@@ -28,7 +28,7 @@ static int	helper(long n)
 int	ft_putnbr(int n)
 {
 	long	num;
-	int	i;
+	int		i;
 
 	i = 0;
 	num = n;

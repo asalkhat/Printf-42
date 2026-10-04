@@ -1,9 +1,21 @@
-#include "ft_printft.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putptr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: asalkhat <asalkhat@learner.42.tech>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/10/04 09:41:19 by asalkhat          #+#    #+#             */
+/*   Updated: 2026/10/04 10:25:41 by asalkhat         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "ft_printf.h"
 
 int	ft_putptr(void *ptr)
 {
-	unsigned long i;
-	int	count;
+	unsigned long	i;
+	int				count;
 
 	count = 0;
 	if (ptr == NULL)

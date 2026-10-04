@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_puthexa.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: asalkhat <asalkhat@learner.42.tech>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/10/04 10:16:23 by asalkhat          #+#    #+#             */
+/*   Updated: 2026/10/04 10:16:48 by asalkhat         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 static int	helper(unsigned long n, int upper)
@@ -22,4 +34,3 @@ int	ft_puthexa(unsigned long n, int upper)
 {
 	return (helper(n, upper));
 }
-
