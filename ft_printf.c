@@ -6,7 +6,7 @@
 /*   By: asalkhat <asalkhat@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/01 15:29:46 by asalkhat          #+#    #+#             */
-/*   Updated: 2026/10/04 11:23:08 by asalkhat         ###   ########.fr       */
+/*   Updated: 2026/10/04 13:37:50 by asalkhat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,15 @@ static int	hex_helper(char c, va_list args)
 	if (c == 'x')
 		return (ft_puthexa(va_arg(args, unsigned int), 0));
 	return (ft_puthexa(va_arg(args, unsigned int), 1));
+}
+
+static int	helper2(char c)
+{
+	if (write(1, "%", 1) == -1)
+		return (-1);
+	if (write(1, &c, 1) == -1)
+		return (-1);
+	return (2);
 }
 
 static int	helper(char c, va_list args)
@@ -37,40 +46,50 @@ static int	helper(char c, va_list args)
 		return (hex_helper(c, args));
 	else if (c == '%')
 	{
-		write(1, "%", 1);
+		if (write(1, "%", 1) == -1)
+			return (-1);
 		return (1);
 	}
 	else
-	{
-		write(1, "%", 1);
-		write(1, &c, 1);
-		return (2);
-	}
+		return (helper2(c));
 }
 
-int	ft_printf(const char *format, ...)
+static int	print_format(const char *format, va_list args)
 {
 	size_t	i;
 	size_t	count;
-	va_list	args;
+	int		j;
 
-	va_start(args, format);
 	i = 0;
 	count = 0;
 	while (format[i])
 	{
 		if (format[i] == '%' && format[i + 1])
 		{
-			count = count + helper(format[i + 1], args);
+			j = helper(format[i + 1], args);
+			if (j == -1)
+				return (-1);
+			count = count + j;
 			i = i + 2;
 		}
 		else
 		{
-			write(1, &format[i], 1);
+			if (write(1, &format[i], 1) == -1)
+				return (-1);
 			count++;
 			i++;
 		}
 	}
+	return (count);
+}
+
+int	ft_printf(const char *format, ...)
+{
+	va_list	args;
+	int		count;
+
+	va_start(args, format);
+	count = print_format(format, args);
 	va_end(args);
 	return (count);
 }

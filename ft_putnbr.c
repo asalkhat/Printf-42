@@ -6,7 +6,7 @@
 /*   By: asalkhat <asalkhat@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/04 10:18:27 by asalkhat          #+#    #+#             */
-/*   Updated: 2026/10/04 12:13:48 by asalkhat         ###   ########.fr       */
+/*   Updated: 2026/10/04 13:01:50 by asalkhat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int	ft_putnbr(int n)
 {
 	long	num;
 	int		i;
+	int		j;
 
 	i = 0;
 	num = n;
@@ -44,8 +45,9 @@ int	ft_putnbr(int n)
 		num = -num;
 		i++;
 	}
-	i = i + helper(num);
-	if (i == -1)
+	j = helper(num);
+	if (j == -1)
 		return (-1);
+	i = i + j;
 	return (i);
 }
