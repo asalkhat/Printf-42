@@ -6,7 +6,7 @@
 /*   By: asalkhat <asalkhat@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/01 15:29:46 by asalkhat          #+#    #+#             */
-/*   Updated: 2026/10/04 10:15:22 by asalkhat         ###   ########.fr       */
+/*   Updated: 2026/10/04 11:23:08 by asalkhat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 static int	hex_helper(char c, va_list args)
 {
 	if (c == 'x')
-			return (ft_puthexa(va_arg(args, unsigned int), 0));
-		return (ft_puthexa(va_arg(args, unsigned int), 1));
+		return (ft_puthexa(va_arg(args, unsigned int), 0));
+	return (ft_puthexa(va_arg(args, unsigned int), 1));
 }
 
 static int	helper(char c, va_list args)
@@ -34,7 +34,7 @@ static int	helper(char c, va_list args)
 	else if (c == 'u')
 		return (ft_putnbru(va_arg(args, unsigned int)));
 	else if (c == 'x' || c == 'X')
-    	return (hex_helper(c, args));
+		return (hex_helper(c, args));
 	else if (c == '%')
 	{
 		write(1, "%", 1);
@@ -59,10 +59,10 @@ int	ft_printf(const char *format, ...)
 	count = 0;
 	while (format[i])
 	{
-		if (format[i] == '%')
+		if (format[i] == '%' && format[i + 1])
 		{
 			count = count + helper(format[i + 1], args);
-			i++;
+			i = i + 2;
 		}
 		else
 		{

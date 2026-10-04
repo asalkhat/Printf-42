@@ -6,7 +6,7 @@
 /*   By: asalkhat <asalkhat@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/01 17:28:25 by asalkhat          #+#    #+#             */
-/*   Updated: 2026/10/01 17:32:21 by asalkhat         ###   ########.fr       */
+/*   Updated: 2026/10/04 12:03:48 by asalkhat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int	ft_putchar(char c)
 {
-	write(1, &c, 1);
+	if (write(1, &c, 1) == -1)
+		return (-1);
 	return (1);
 }

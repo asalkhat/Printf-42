@@ -6,7 +6,7 @@
 /*   By: asalkhat <asalkhat@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/04 09:41:19 by asalkhat          #+#    #+#             */
-/*   Updated: 2026/10/04 10:25:41 by asalkhat         ###   ########.fr       */
+/*   Updated: 2026/10/04 12:35:42 by asalkhat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,28 @@ int	ft_putptr(void *ptr)
 {
 	unsigned long	i;
 	int				count;
+	int				j;
 
 	count = 0;
 	if (ptr == NULL)
 	{
-		count = count + ft_putstr("(nil)");
-		return (count);
+		j = ft_putstr("(nil)");
+		if (j == -1)
+			return (-1);
+		return (j);
 	}
 	i = (unsigned long)ptr;
-	count = count + ft_putchar('0');
-	count = count + ft_putchar('x');
-	count = count + ft_puthexa(i, 0);
+	j = ft_putchar('0');
+	if (j == -1)
+		return (-1);
+	count = count + j;
+	j = ft_putchar('x');
+	if (j == -1)
+		return (-1);
+	count = count + j;
+	j = ft_puthexa(i, 0);
+	if (j == -1)
+		return (-1);
+	count = count + j;
 	return (count);
 }
