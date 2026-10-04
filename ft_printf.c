@@ -12,38 +12,64 @@
 
 #include "ft_printf.h"
 
-static int	helper(char c, args)
+static int	helper(char c, va_list args)
 {
 	if (c == 'c')
 	{
 		int	value;
+
 		value = va_arg(args, int);
-		return (ft_putchar_fd(value, 1));
+		return (ft_putchar(value));
 	}
 	else if (c == 's')
 	{
 		char *ptr;
+
 		ptr = va_arg(args, char *);
-		return (ft_putstr_fd(ptr, 1));
+		return (ft_putstr(ptr));
 	}
 	else if (c == 'p')
+	{
+		void	*value;
+		value = va_arg(args, void *);
+		return (ft_putptr(value));
+	}
 	else if (c == 'd')
 	{
 		int	value;
+
 		value = va_arg(args, int);
-		return (ft_putnbr_fd(value, 1));
+		return (ft_putnbr(value));
 	}
 	else if (c == 'i')
 	{
 		int     value;
+
 		value = va_arg(args, int);
-		return (ft_putnbr_fd(value, 1));
+		return (ft_putnbr(value));
 
 	}
 	else if (c == 'u')
+	{
+		unsigned int	value;
+
+		value = va_arg(args, unsigned int);
+		return (ft_putnbru(value));
+	}
 	else if (c == 'x' || c == 'X')
+	{
+		unsigned int	value;
+
+		value = va_arg(args, unsigned int);
+		if (c == 'x')
+			return (ft_puthexa(value, 0));
+		return (ft_puthexa(value, 1));
+	}
 	else if (c == '%')
-	return ();
+	{
+		write(1, "%", 1);
+		return (1);
+	}
 }
 
 int	ft_printf(const char *format, ...)

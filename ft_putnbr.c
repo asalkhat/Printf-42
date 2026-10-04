@@ -12,20 +12,20 @@
 
 #include "ft_printf.h"
 
-static int	helper(long n, int fd)
+static int	helper(long n)
 {
 	char	c;
 	int	count;
 
 	count = 0;
 	if (n >= 10)
-		count = helper(n / 10, fd);
+		count = helper(n / 10);
 	c = (n % 10) + '0';
-	write(fd, &c, 1);
+	write(1, &c, 1);
 	return (count + 1);
 }
 
-int	ft_putnbr_fd(int n, int fd)
+int	ft_putnbr(int n)
 {
 	long	num;
 	int	i;
@@ -34,10 +34,10 @@ int	ft_putnbr_fd(int n, int fd)
 	num = n;
 	if (num < 0)
 	{
-		write(fd, "-", 1);
+		write(1, "-", 1);
 		num = -num;
 		i++;
 	}
-	i = i + helper(num, fd);
+	i = i + helper(num);
 	return (i);
 }
